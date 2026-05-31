@@ -1,0 +1,43 @@
+name: MossBlokPara
+version: '${project.version}'
+main: dev.wulnry.mossblokpara.MossBlokPara
+api-version: '1.21'
+description: Oyuncular WorldGuard bölgelerinde blok kırdığında Vault üzerinden para kazanır.
+author: wulnrydev
+website: ''
+
+# -----------------------------------------------
+# Zorunlu bağımlılıklar — bu eklentiler olmadan
+# MossBlokPara yüklenemez.
+# -----------------------------------------------
+depend:
+  - Vault
+  - WorldGuard
+
+# -----------------------------------------------
+# Opsiyonel bağımlılıklar (yüklü olursa destekler)
+# -----------------------------------------------
+softdepend:
+  - WorldEdit
+
+# -----------------------------------------------
+# Komutlar
+# -----------------------------------------------
+commands:
+  mossblokpara:
+    description: MossBlokPara ana komutu (yeniden yükleme vb.)
+    aliases:
+      - mbp
+    usage: /<command> [reload]
+    permission: mossblokpara.admin
+
+# -----------------------------------------------
+# İzinler
+# -----------------------------------------------
+permissions:
+  mossblokpara.admin:
+    description: Eklenti yöneticisi izni (reload komutu dahil)
+    default: op
+  mossblokpara.earn:
+    description: Oyuncu blok kırarak para kazanabilir
+    default: true
