@@ -34,8 +34,8 @@ messages:
 # DİKKATLİ ayarlanmalı (region isimleri küçük harf).
 # -----------------------------------------------
 regions:
-  - "maden_bolgesi"
-  - "kayalik_alan"
+  - "anapvp"
+  - "guvenlimaden"
   # İstediğiniz kadar region ekleyebilirsiniz.
   # - "baska_bolge"
 
@@ -55,74 +55,44 @@ regions:
 # Tam liste: https://jd.papermc.io/paper/1.21/org/bukkit/Material.html
 # -----------------------------------------------
 blocks:
-  MOSSY_COBBLESTONE:
-    display-name: "Yosunlu Taş"
-    chance: 50.0
-    min-amount: 50.0
-    max-amount: 150.0
-
-  MOSSY_STONE_BRICKS:
-    display-name: "Yosunlu Taş Tuğla"
-    chance: 60.0
-    min-amount: 100.0
-    max-amount: 250.0
-
-  COBBLESTONE:
-    display-name: "Taş"
-    chance: 30.0
-    min-amount: 10.0
-    max-amount: 50.0
-
-  STONE:
-    display-name: "Düzgün Taş"
-    chance: 25.0
-    min-amount: 15.0
-    max-amount: 60.0
-
-  COAL_ORE:
-    display-name: "Kömür Cevheri"
-    chance: 40.0
-    min-amount: 30.0
-    max-amount: 80.0
-
-  DEEPSLATE_COAL_ORE:
-    display-name: "Derin Kömür Cevheri"
-    chance: 45.0
-    min-amount: 40.0
-    max-amount: 100.0
-
-  IRON_ORE:
-    display-name: "Demir Cevheri"
-    chance: 35.0
-    min-amount: 80.0
-    max-amount: 200.0
-
-  DEEPSLATE_IRON_ORE:
-    display-name: "Derin Demir Cevheri"
-    chance: 40.0
-    min-amount: 100.0
-    max-amount: 250.0
-
-  GOLD_ORE:
-    display-name: "Altın Cevheri"
-    chance: 20.0
-    min-amount: 150.0
-    max-amount: 400.0
-
-  DEEPSLATE_GOLD_ORE:
-    display-name: "Derin Altın Cevheri"
-    chance: 25.0
-    min-amount: 200.0
-    max-amount: 500.0
-
   DIAMOND_ORE:
     display-name: "Elmas Cevheri"
     chance: 10.0
-    min-amount: 500.0
-    max-amount: 1500.0
+    min-amount: 0.01
+    max-amount: 0.09
 
-  DEEPSLATE_DIAMOND_ORE:
-    display-name: "Derin Elmas Cevheri"
-    chance: 12.0
-    min-amount: 700.0
-    max-amount: 2000.0
+  EMERALD_ORE:
+    display-name: "Zümrüt Cevheri"
+    chance: 10.0
+    min-amount: 0.01
+    max-amount: 0.09
+
+  IRON_ORE:
+    display-name: "Demir Cevheri"
+    chance: 10.0
+    min-amount: 0.01
+    max-amount: 0.09
+
+  LAPIS_ORE:
+    display-name: "Lapis Cevheri"
+    chance: 10.0
+    min-amount: 0.01
+    max-amount: 0.09
+
+  GOLD_ORE:
+    display-name: "Altın Cevheri"
+    chance: 10.0
+    min-amount: 0.01
+    max-amount: 0.09
+
+  COAL_ORE:
+    display-name: "Kömür Cevheri"
+    chance: 10.0
+    min-amount: 0.01
+    max-amount: 0.09
+
+  STONE:
+    display-name: "Taş"
+    chance: 10.0
+    min-amount: 0.01
+    max-amount: 0.09

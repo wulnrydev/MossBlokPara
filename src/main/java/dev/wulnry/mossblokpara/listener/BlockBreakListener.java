@@ -86,7 +86,10 @@ public class BlockBreakListener implements Listener {
                 .replace("{amount}", vaultHook.format(rewardAmount))
                 .replace("{balance}", vaultHook.format(currentBalance));
 
-        // Oyuncuya yolla
-        player.sendMessage(msg);
+        // Oyuncuya yolla (Chat spamını önlemek için Action Bar kullanıyoruz)
+        player.spigot().sendMessage(
+                net.md_5.bungee.api.ChatMessageType.ACTION_BAR,
+                net.md_5.bungee.api.chat.TextComponent.fromLegacyText(msg)
+        );
     }
 }
