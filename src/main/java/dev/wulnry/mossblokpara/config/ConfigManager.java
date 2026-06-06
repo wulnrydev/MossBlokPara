@@ -42,6 +42,8 @@ public class ConfigManager {
     private String reloadFailMessage;
     private String noPermissionMessage;
 
+    private boolean debugMode;
+
     // Hex renk kodlarını parse etmek için Pattern (Örn: &#RRGGBB)
     private static final Pattern HEX_PATTERN = Pattern.compile("&#([A-Fa-f0-9]{6})");
 
@@ -64,6 +66,7 @@ public class ConfigManager {
         activeRegions.clear();
 
         // 1. Mesajları yükle
+        debugMode = config.getBoolean("debug", false);
         rewardMessage = colorize(config.getString("messages.reward", "&aBaşarıyla blok kırdın!"));
         reloadSuccessMessage = colorize(config.getString("messages.reload-success", "&aConfig yenilendi."));
         reloadFailMessage = colorize(config.getString("messages.reload-fail", "&cHata oluştu."));
@@ -139,6 +142,18 @@ public class ConfigManager {
 
     public int getRegionCount() {
         return activeRegions.size();
+    }
+
+    public boolean isDebugMode() {
+        return debugMode;
+    }
+
+    public Map<Material, BlockRewardData> getBlockRewards() {
+        return blockRewards;
+    }
+
+    public Set<String> getActiveRegions() {
+        return activeRegions;
     }
 
     /**

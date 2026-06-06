@@ -42,31 +42,34 @@ public class BlockBreakListener implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
 
-        // 1. İzin Kontrolü (Optimizasyon: İlk başta izni yoksa direkt atla)
+        boolean debug = configManager.isDebugMode() && player.hasPermission("mossblokpara.admin");
+
+        // 1. İzin Kontrolü
         if (!player.hasPermission("mossblokpara.earn")) {
+            if (debug) player.sendMessage(ConfigManager.colorize("&7[Debug] &cmossblokpara.earn izni yok."));
             return;
         }
 
         Material blockType = event.getBlock().getType();
 
-        // 2. Erken Dönüş (Early Return): Blok config'de var mı?
-        // Bu işlem O(1) maliyetlidir.
+        // 2. Blok config'de var mı?
         BlockRewardData rewardData = configManager.getRewardData(blockType);
         if (rewardData == null) {
+            if (debug) player.sendMessage(ConfigManager.colorize("&7[Debug] &eBlok config'de yok: &f" + blockType.name()));
             return;
         }
 
         // 3. Bölge Kontrolü
-        // Blok config'deyse, kırılan bloğun konumu doğru bölgede mi bakıyoruz.
         if (!worldGuardHook.isInConfiguredRegion(event.getBlock().getLocation(), configManager)) {
+            if (debug) player.sendMessage(ConfigManager.colorize("&7[Debug] &eBölge eşleşmedi. Aktif bölgeler: &f" + configManager.getActiveRegions()));
             return;
         }
 
         // 4. Şans Hesaplaması
-        // 0.0 dahil, 100.0 hariç rastgele double
         double randomRoll = ThreadLocalRandom.current().nextDouble(100.0);
         if (!rewardData.rollSuccess(randomRoll)) {
-            return; // Şans tutmadı
+            if (debug) player.sendMessage(ConfigManager.colorize("&7[Debug] &eŞans tutmadı: &f" + String.format("%.2f", randomRoll) + " / " + rewardData.chance()));
+            return;
         }
 
         // 5. Para Miktarının Hesaplanması

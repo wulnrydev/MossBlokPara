@@ -52,7 +52,21 @@ public class MossBlokParaCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        sender.sendMessage(ConfigManager.colorize("&#15FF08&lBoxPvP &8▸ &7Bilinmeyen alt komut."));
+        if (args[0].equalsIgnoreCase("list")) {
+            if (!sender.hasPermission("mossblokpara.admin")) {
+                sender.sendMessage(configManager.getNoPermissionMessage());
+                return true;
+            }
+
+            sender.sendMessage(ConfigManager.colorize("&#15FF08&lBoxPvP &8▸ &7Yüklü bloklar &8(" + configManager.getBlockCount() + "&8)&7:"));
+            configManager.getBlockRewards().forEach((mat, data) ->
+                sender.sendMessage(ConfigManager.colorize("  &8- &f" + mat.name() + " &7(" + data.displayName() + "&7) &8| &7Şans: &f" + data.chance() + "% &8| &7" + data.minAmount() + "-" + data.maxAmount()))
+            );
+            sender.sendMessage(ConfigManager.colorize("&#15FF08&lBoxPvP &8▸ &7Aktif bölgeler &8(" + configManager.getRegionCount() + "&8)&7: &f" + configManager.getActiveRegions()));
+            return true;
+        }
+
+        sender.sendMessage(ConfigManager.colorize("&#15FF08&lBoxPvP &8▸ &7Kullanım: &f/mossblokpara reload &8| &f/mossblokpara list"));
         return true;
     }
 
@@ -61,8 +75,10 @@ public class MossBlokParaCommand implements CommandExecutor, TabCompleter {
         if (args.length == 1) {
             if (sender.hasPermission("mossblokpara.admin")) {
                 List<String> completions = new ArrayList<>();
-                if ("reload".startsWith(args[0].toLowerCase())) {
-                    completions.add("reload");
+                for (String sub : new String[]{"reload", "list"}) {
+                    if (sub.startsWith(args[0].toLowerCase())) {
+                        completions.add(sub);
+                    }
                 }
                 return completions;
             }

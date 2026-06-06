@@ -4,6 +4,15 @@
 # ╚══════════════════════════════════════════════════════╝
 
 # -----------------------------------------------
+# DEBUG MODU
+# -----------------------------------------------
+# true yapılırsa, mossblokpara.admin iznine sahip
+# oyuncular blok kırdığında neden para almadıklarını
+# chat'te görebilir. Sorun tespiti için kullan.
+# -----------------------------------------------
+debug: false
+
+# -----------------------------------------------
 # MESAJ AYARLARI
 # -----------------------------------------------
 # Renk kodları: &x -> standart, &#RRGGBB -> hex
